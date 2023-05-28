@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Independence Prediction</title>
+    <style>
+        /* style for form container */
+        .form-container {
+            margin: auto;
+            width: 400px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* style for form label */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* style for form input */
+        input[type="number"],
+        select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* style for submit button */
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        /* style for error message */
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Financial Independence Prediction</h2>
+        <form method="POST" action="/predict">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gross_annual_wage">gross_annual_wage:</label>
+            <input type="number" id="gross_annual_wage" name="gross_annual_wage" required>
+
+            <label for="total_portfolio">Total portfolio:</label>
+            <input type="number" id="total_portfolio" name="total_portfolio" required>
+
+            <label for="amount_for_fi">Amount for Financial Independence:</label>
+            <input type="number" id="amount_for_fi" name="amount_for_fi" required>
+
+            <label for="curr_percentage_of_fi">Current % of Financial Independence:</label>
+            <input type="number" id="curr_percentage_of_fi" name="curr_percentage_of_fi" required>
+
+           
+
+            <label for="response_release_consent">Response Release Consent:</label>
+            <select id="response_release_consent" name="response_release_consent" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            
+
+            <input type="submit" value="Submit">
+        </form>
+        <a href="/analysis">Analysis</a>
+
+
+        
+    {% if prediction %}
+        <h2>Model Prediction</h2>
+        <p>Financial Independence Prediction : {{ prediction }}</p>
+    {% endif %}
+    </div>
+</body>
+
+</html>

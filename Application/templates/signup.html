@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up Page</title>
+    <style>
+             * {
+            box-sizing: border-box;
+        }
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .header {
+        background-color: #2f3542;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+    }
+    
+    .header h1 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    .container {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin: 50px auto;
+        max-width: 500px;
+        padding: 40px;
+    }
+    
+    .container h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .container form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .container label {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .container input {
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .container button {
+        background-color: #2f3542;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .container button:hover {
+        background-color: #4e5d78;
+    }
+    
+    .container p {
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .container a {
+        color: #2f3542;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .container a:hover {
+        color: #4e5d78;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .container {
+            margin: 20px;
+            padding: 20px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+        }
+    }
+    </style>
+<script>
+    function validateform(){
+        var a,b,c,d;
+        a=document.getElementById("pid").value;
+        b=document.getElementById("email").value;
+        c=document.getElementById("password").value;
+        d=document.getElementById("repassword").value;
+        if(b=="")
+        {alert("Email must be filled!");return false;}
+        if(a=="")
+        {alert("User ID must be filled!");return false;}
+        if(c=="")
+        {alert("Password must be filled!");return false;}
+        if(c!=d)
+        {alert("Password does not match!");return false;}    
+    }    
+</script>
+</head>
+
+<body> 
+    <div class="header">
+        <center><h1>Sign up to access!</h1></center>
+    </div>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup" action="/signup" method="POST">
+            <label for="email">Email ID: </label><br>
+            <input name="email" id="email" type="text" placeholder="Email Address"><br><br>
+        <label for="pid">UID: </label><br>
+        <input name="pid" id="pid" type="text" placeholder="User ID"><br><br>
+        <label for="password">Password: </label><br>
+        <input name="password" id="password" type="password" placeholder="Your password"><br><br>
+        <label for="repassword">Re-enter your password: </label><br>
+        <input name="repassword" id="repassword" type="password" placeholder="Re-enter password"><br><br>
+        <center>  
+        <button form="signup" type="submit" name="signup">Sign up</button>
+        </center>
+        </form>
+        <p align="center">Existing User? <a href="{{ url_for('login') }}">Login</a></p>
+    </div><br>
+
+</body>
+</html>
